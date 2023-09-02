@@ -1,35 +1,30 @@
-import { querytoDB, connectToDB } from "utils/db/database";
+import { FindInDB } from "utils/db/database";
 import Image from "next/image";
 import AddButton from "components/Addbutton";
+import { itemType, item_model } from "utils/db/schema";
 
 export default async function GetInventory() {
   try {
-    await connectToDB();
-  } catch (err) {
-    return <>Error Connecting to DB</>;
-  }
-  try {
-    const items = await querytoDB({}, "");
+    const items = await FindInDB(item_model, {}, "");
     return (
-      <div className="pt-8 pl-4 pb-2 flex flex-row flex-wrap gap-x-16 gap-y-8">
+      <div className="pt-8 pl-4 pb-2 flex flex-wrap gap-x-16 gap-y-12">
         {items &&
-          items.map((item) => {
+          items.map((item: itemType) => {
             const img = `/${item.itemImage}`;
 
             return (
-              <div className="flex flex-col bg-gray-300 w-80 h-34 ">
-                {" "}
+              <div className="flex flex-col rounded-2xl bg-gray-300 w-80 h-34 ">
                 <Image
                   src={img}
                   width={0}
                   height={0}
                   sizes="100vw"
                   style={{ width: "40vw", height: "30vh" }}
-                  alt="asd"
+                  alt="image"
+                  className="rounded-t-xl"
                 />
-                <div>{item.itemName}</div>
-                <div>Quantity Left : {item.itemQuantity}</div>
-                <AddButton />
+                <div className="indent-2 pb-4 pt-2">{item.itemName}</div>
+                <AddButton itemID={item.itemID} />
               </div>
             );
           })}

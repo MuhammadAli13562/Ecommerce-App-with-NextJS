@@ -19,9 +19,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${michroma.variable} ${dancing.variable}`}>
         <AuthProvider>
-          <div className="flex flex-col overflow-x-auto ">
+          <div className="flex flex-col min-h-screen mt-28">
             <Header />
-            {children}
+            <div className="flex-grow">{children}</div>
             <Footer />
           </div>
         </AuthProvider>

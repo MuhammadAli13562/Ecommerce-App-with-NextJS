@@ -1,21 +1,42 @@
 import mongoose, { Schema, model } from "mongoose";
 
-const itemSchema = new Schema({
+export type itemType = {
+  itemName: String;
+  itemID: String;
+  itemQuantity: Number;
+  itemImage: String;
+};
+
+export const itemSchema = new Schema<itemType>({
   itemName: String,
-  itemid: String,
+  itemID: String,
   itemQuantity: Number,
   itemImage: String,
 });
 
-const cartSchema = new Schema({
+export type cartType = {
+  userID: String;
+  cartItems: [typeof itemSchema];
+};
+
+export const cartSchema = new Schema<cartType>({
   userID: String,
   cartItems: [itemSchema],
 });
 
-const userSchema = new Schema({
+export const userSchema = new Schema({
   username: String,
   passwordHash: String,
   userID: String,
 });
 
-export default mongoose.models["items"] ?? mongoose.model("items", itemSchema);
+const item_model =
+  mongoose.models["items"] ?? mongoose.model("items", itemSchema);
+
+const cart_model =
+  mongoose.models["carts"] ?? mongoose.model("carts", cartSchema);
+
+const user_model =
+  mongoose.models["users"] ?? mongoose.model("users", userSchema);
+
+export { item_model, cart_model, user_model };

@@ -1,23 +1,26 @@
 // database.ts
 import mongoose from "mongoose";
-import item_doc from "./schema";
+import { item_model, cart_model } from "./schema";
 
 async function connectToDB() {
   try {
     await mongoose.connect("mongodb://127.0.0.1:27017/ecommdb");
     console.log("Connected to DB");
-  } catch (error) {
-    console.log("Error Connecting to DB:", error);
-    throw new Error("Error Connecting to DB");
+  } catch (error: any) {
+    throw new Error(`Error Connecting to DB : ${error.message}`);
   }
 }
 
-async function querytoDB(findQuery: Object, selectQuery: string) {
+async function FindInDB(
+  document: typeof item_model | typeof cart_model,
+  findQuery: Object,
+  selectQuery: string
+) {
   try {
-    const query = item_doc.find(findQuery);
+    await connectToDB();
+    const query = document.find(findQuery);
     query.select(selectQuery);
     const items = await query.exec();
-    console.log("query result:", items);
     return items;
   } catch (error) {
     console.log("error querying:", error);
@@ -25,4 +28,4 @@ async function querytoDB(findQuery: Object, selectQuery: string) {
   }
 }
 
-export { querytoDB, connectToDB };
+export { FindInDB, connectToDB };
