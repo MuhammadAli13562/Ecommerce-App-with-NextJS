@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import AuthProvider from "context/AuthProvider";
+import Carousel from "components/Carousel";
 
 export const metadata: Metadata = {
   title: "Create Next App",
