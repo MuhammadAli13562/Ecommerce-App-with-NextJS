@@ -8,6 +8,7 @@ import img4 from "../public/featured/slide4.jpg";
 import img5 from "../public/featured/slide5.jpg";
 import img6 from "../public/featured/slide6.webp";
 import img7 from "../public/featured/slide7.webp";
+import ClickableDiv from "./ClickableDiv";
 
 export default function FeaturedCollections() {
   return (
@@ -17,7 +18,7 @@ export default function FeaturedCollections() {
       <div className="gap-x-8 gap-y-8 mt-8 w-2/3 ">
         <div className="flex flex-wrap gap-x-8 gap-y-8  justify-center">
           {featured_data.map((item) => (
-            <div className="flex flex-col items-center   w-1/5">
+            <div className="relative flex flex-col items-center   w-1/5">
               <div className="flex justify-center  ">
                 <Image
                   src={item.ItemImage}
@@ -28,6 +29,7 @@ export default function FeaturedCollections() {
               </div>
               <div className="text-center">{item.ItemName}</div>
               <div>{item.ItemPrice}</div>
+              <ClickableDiv />
             </div>
           ))}
         </div>

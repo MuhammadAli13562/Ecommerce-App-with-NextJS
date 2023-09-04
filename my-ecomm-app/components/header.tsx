@@ -8,7 +8,7 @@ export default async function Header() {
   const session = await getServerSession(Options);
 
   return (
-    <div className="border-solid border-black border-2 fixed top-0 left-0 z-50 w-full flex flex-col justify-center h-60  rounded-fulltext-black ">
+    <div className="border-solid border-black border-2 fixed top-0 left-0 z-50 w-full flex flex-col justify-center h-50  rounded-fulltext-black ">
       <div className="flex justify-evenly bg-black pb-2 pt-2">
         <div className="text-white">
           <div className="text-sm">HASSLE-FREE</div>
