@@ -1,10 +1,10 @@
 import "@styles/globals.css";
 import { michroma, dancing } from "../fonts/font";
 import type { Metadata } from "next";
-import Header from "../components/header";
-import Footer from "../components/footer";
+import Header from "../components/Layout/header";
+import Footer from "../components/Layout/footer";
 import AuthProvider from "context/AuthProvider";
-import Carousel from "components/Carousel";
+import { RecoilRootWrapper } from "./recoilContext";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -19,13 +19,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${michroma.variable} ${dancing.variable}`}>
-        <AuthProvider>
-          <div className="flex flex-col min-h-screen mt-28">
-            <Header />
-            <div className="flex-grow">{children}</div>
-            <Footer />
-          </div>
-        </AuthProvider>
+        <RecoilRootWrapper>
+          <AuthProvider>
+            <div className="flex flex-col min-h-screen mt-28">
+              <Header />
+              <div className="flex-grow">{children}</div>
+              <Footer />
+            </div>
+          </AuthProvider>
+        </RecoilRootWrapper>
       </body>
     </html>
   );

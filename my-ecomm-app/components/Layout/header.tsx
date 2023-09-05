@@ -1,8 +1,8 @@
 import { getServerSession } from "next-auth";
 import { Options } from "app/api/auth/[...nextauth]/options";
-import SignInButton from "./signin";
+import SignInButton from "../signin";
 import Image from "next/image";
-import logo from "../public/logo.png";
+import logo from "../../public/logo.png";
 
 export default async function Header() {
   const session = await getServerSession(Options);

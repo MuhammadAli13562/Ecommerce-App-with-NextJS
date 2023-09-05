@@ -1,14 +1,14 @@
 import Image from "next/image";
-
-import img0 from "../public/featured/slide0.webp";
-import img1 from "../public/featured/slide1.webp";
-import img2 from "../public/featured/slide2.jpg";
-import img3 from "../public/featured/slide3.jpg";
-import img4 from "../public/featured/slide4.jpg";
-import img5 from "../public/featured/slide5.jpg";
-import img6 from "../public/featured/slide6.webp";
-import img7 from "../public/featured/slide7.webp";
-import ClickableDiv from "./ClickableDiv";
+import img0 from "../../public/featured/slide0.webp";
+import img1 from "../../public/featured/slide1.webp";
+import img2 from "../../public/featured/slide2.jpg";
+import img3 from "../../public/featured/slide3.jpg";
+import img4 from "../../public/featured/slide4.jpg";
+import img5 from "../../public/featured/slide5.jpg";
+import img6 from "../../public/featured/slide6.webp";
+import img7 from "../../public/featured/slide7.webp";
+import ClickableDiv from "../QuickView/ClickableDiv";
+import ItemModal from "components/QuickView/ItemModal";
 
 export default function FeaturedCollections() {
   return (
@@ -18,7 +18,7 @@ export default function FeaturedCollections() {
       <div className="gap-x-8 gap-y-8 mt-8 w-2/3 ">
         <div className="flex flex-wrap gap-x-8 gap-y-8  justify-center">
           {featured_data.map((item) => (
-            <div className="relative flex flex-col items-center   w-1/5">
+            <div className="flex flex-col relative items-center   w-1/5">
               <div className="flex justify-center  ">
                 <Image
                   src={item.ItemImage}
@@ -29,11 +29,12 @@ export default function FeaturedCollections() {
               </div>
               <div className="text-center">{item.ItemName}</div>
               <div>{item.ItemPrice}</div>
-              <ClickableDiv />
+              <ClickableDiv item={item} />
             </div>
           ))}
         </div>
       </div>
+      <ItemModal />
     </div>
   );
 }

@@ -2,9 +2,9 @@
 
 import useEmblaCarousel from "embla-carousel-react";
 import Image from "next/image";
-import slide1 from "../public/slide1.webp";
-import slide2 from "../public/slide2.webp";
-import slide3 from "../public/slide3.webp";
+import slide1 from "../../public/slide1.webp";
+import slide2 from "../../public/slide2.webp";
+import slide3 from "../../public/slide3.webp";
 import Autoplay from "embla-carousel-autoplay";
 
 export default function Carousel() {

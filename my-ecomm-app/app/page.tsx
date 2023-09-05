@@ -1,6 +1,5 @@
-import Carousel from "components/Carousel";
-import FeaturedCollections from "components/Featured";
-import Image from "next/image";
+import Carousel from "components/Carousel/Carousel";
+import FeaturedCollections from "components/Featured/Featured";
 
 export default function Home() {
   return (
